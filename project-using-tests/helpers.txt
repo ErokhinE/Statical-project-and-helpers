@@ -1,0 +1,130 @@
+1.Лекция
+
+Изменяемые и неизменяемые типы:
+Неизменяемые:
+int, float,complex, corteg, string, frozen set
+Изменяемые:
+List, set(Логические операции), dictionary:
+	Code to run:
+	a = [1,2,3]
+	b = [3,4,5]
+	b=a
+	a[1] = 15
+	b[0] = 10
+	print(a)
+	print(b)
+	
+2. Лекция
+
+Класс многомерных массивов называется ndarray
+arr.ndim колличесвто измерений
+arr.size размер массива
+arr.shape (размерность )
+arr.dtype тип переменных
+arr.itemsize размер переменных
+np.zeros из нулей
+np.ones из 1
+np.arange(10) массив от 0 до 9
+np.linspace(0 , 1, 25) массив от 0 до 1 25 чисел
+np.eye() единичная матрица
+	Code to run:
+	import numpy as np
+	a=np.array(['Bob','Nebob'])
+	print(a == "Bob")
+	Output:
+	[True False]
+	import numpy as np
+	a=np.array(['Bob','Nebob'])
+	mask = (a=="Bob")
+	print(a[mask])
+	Output:
+	['Bob']
+a.cumsum(axis = 0) сумма элементов вниз по строкам
+a.cumprod
+
+3. Лекция
+Series — одномерный массив, который может хранить значения любого типа данных
+DataFrame — двумерный массив (таблица), в котором столбцами являются объекты класса Series
+pd.series
+series.index дает итератор с от начала до конца с шагом
+series.values выводит значения
+через index= при создании можно указать индексы или просто через запятую
+series[] выводит значения по индексу
+series[[]] выводит индекс и значение
+mask = series>5
+Если выводим mask дает тру false под значениия маски
+series[mask] выводит элементы с индексами под маску
+series.name название переопредлять
+series.index.name название индексов переопредлять
+	code to run:
+	import numpy as np
+	import pandas as pd
+	my_serise = pd.Series([5,6,7,8],['a','b',1,2])
+	print(my_serise)
+	print(my_serise.index)
+	print(my_serise[[1]])
+	mask = my_serise>5
+	print(mask)
+	my1_series = pd.Series({1:5,2:3})
+	print(my1_series)
+	
+pd.DataFrame
+data_frame.column даст series
+data_frame['column'] даст series
+data_frame[['column']] даст новый датафрейм
+pd.read_ считать 
+for gm_chunk in pd.read_csv("файл",sep=",",chunksize=size) считывание по чанкам
+df.to_ экспорт в формате (to_clipboard() в оператвную память компа)
+df.loc['']обращение по строке по строковой метке
+df.iloc[]обращение по строке по индексу
+df.loc['строка в листе','колонка в листе']
+чтобы создать новую колонку df["новая"]=
+df.drop обязательно указать ось(axis=) если мы хотим перезаписать наш датаферйм к этому еще добовляем(inplace=true)
+df.rename меняем название колонки или строки (columns = {'старая'='новая'})
+df.nlargest и df.nsmallest(3,"колонка")
+df.columns = {} переопределить 
+	code to run
+	import numpy as np
+	import pandas as pd
+	data_frame = pd.DataFrame({
+		'city' :["s1","s2","s3"],
+		'delivery':[1,2,3],
+		'availability':[True,False,True]
+	})
+	print(data_frame)
+	print(data_frame[["delivery"]])
+4.Лекция
+pd.concat([data_frame1,data_frame2], axis = 0,1) объединяет таблицы 
+join ='inner' объединяет если есть индекс строки
+append объединяет по строкам частный случай concat
+join основан на объединении таблиц через index df.join(df,how ='left,right,inner,outer')
+inner берет все с одинаковыми индексами
+left берет таблицу слева полностью с права только совпадающие
+right наоборот
+outer полностью таблицы
+pd.merge(df1,df2,on = 'колонка')
+5. Лекция
+pd.set_option('display.max_columns',100) сколько колонок выведет
+pd.set_option('display.max_rows	',100) сколько колонок выведет
+df.describe()
+df[''].value_counts[:колличесвто] колличесвто топ повторяющихся
+df.info() информация о таблице
+astype поменять тип данных
+timeit измеряет время
+разобраться с gropby
+6. Лекция
+Перцентиль занчение которое совпадает с 25 процентов к примеру если числа от 0 до 100 то 25 это знчаение перцентиля 25
+При вычислении отклонения np.std не забывать ddof (sample size - ddof) чтобы примерно приблизиться к общему standart diviation
+SE или стандратная ошибка нужна для оценки насколько мы ошиблись при оценивании через выборку std/sqrt(n)
+несмещенное точечное матожидание от параметра равно параметру. Асимптотически несмещенное матожидание от параметра стремиться к самому параметру
+Состоятельность при бесконечном расширении выборки оценка приходит к значению
+Эфективность при колличесвти несмещенных больше одного решает variance с меньшим параметром дисперсии более удачная оценка генеральной совокупности
+MSE Mean Squared Error Подходит для оценки смещенных выборок(Сумма (тета - тета полученная)^2)/n для несмещенных совпадает с variance
+pdf probability density function вероятность распределения случайной величины
+cdf какова вероятность того что результат меньше или равен
+7. 
+1. Формируется гипотеза H0 и H1
+2. выберается допустимая ошибка
+3. выберается тест
+4. вычесляется k критерий
+
